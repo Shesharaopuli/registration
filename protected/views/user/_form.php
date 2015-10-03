@@ -36,13 +36,6 @@
 		<?php echo $form->textField($model,'user_name',array('size'=>60,'maxlength'=>200)); ?>
 		<?php echo $form->error($model,'user_name'); ?>
 	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'user_level'); ?>
-		<?php echo $form->textField($model,'user_level'); ?>
-		<?php echo $form->error($model,'user_level'); ?>
-	</div>
-
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>

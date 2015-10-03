@@ -61,9 +61,9 @@ class UserModel extends CActiveRecord
 	{
 		return array(
 			'user_id' => 'User',
-			'user_email' => 'User Email',
-			'user_password' => 'User Password',
-			'user_name' => 'User Name',
+			'user_email' => 'Email',
+			'user_password' => 'Password',
+			'user_name' => 'Name',
 			'user_level' => 'User Level',
 		);
 	}
