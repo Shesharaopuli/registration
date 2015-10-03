@@ -31,9 +31,6 @@ class BookingModel extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('booking_id', 'required'),
-			array('booking_id, booking_listing_id, booking_user_id', 'numerical', 'integerOnly'=>true),
-			array('booking_amount', 'length', 'max'=>11),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('booking_id, booking_listing_id, booking_user_id, booking_amount', 'safe', 'on'=>'search'),

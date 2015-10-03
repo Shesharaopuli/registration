@@ -16,7 +16,10 @@ $this->menu=array(
 );
 ?>
 
-<h1>View BookingModel #<?php echo $model->booking_id; ?></h1>
+<h1>You Booking is Successfull! </h1><br>
+
+
+<h1>Your booking details for Booking ID:<?php echo $model->booking_id; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,

@@ -18,6 +18,13 @@
 	<?php echo CHtml::encode($data->listing_price); ?>
 	<br />
 	
-	<button>Book it</button>
+	<form method="post" action="<?php echo Yii::app()->createUrl("booking/BookIt"); ?>">
+	<input type='hidden' name='listing_id' value="<?php echo $data->listing_id ?>">
+	<input type='hidden' name='listing_price' value=<?php echo $data->listing_price ;?>>
+	<input type='submit' value='Book it'>
+	</form>
+	
+	
+	
 
 </div>

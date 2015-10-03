@@ -32,7 +32,7 @@ class BookingController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update','BookIt'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -44,7 +44,31 @@ class BookingController extends Controller
 			),
 		);
 	}
-
+	
+	/**
+	 * Function for Booking-Book it
+	 */
+	public function actionBookIt()
+	{
+		$model=new BookingModel;
+		
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+		
+		if(isset($_POST))
+		{
+			//$model->attributes=$_POST['BookingModel'];
+			$model->booking_listing_id=$_POST['listing_id'];
+			$model->booking_user_id=$_SESSION['userid'];
+			$model->booking_amount=$_POST['listing_price'];
+			if($model->save()){
+				$this->redirect(array('view','id'=>$model->booking_id));
+			}
+		}
+		
+	
+	}
+	
 	/**
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
