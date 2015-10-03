@@ -28,15 +28,15 @@ class ListingController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('index'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','view'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
+				'actions'=>array('admin','delete','view','update'),
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
@@ -63,13 +63,13 @@ class ListingController extends Controller
 	public function actionCreate()
 	{
 		$model=new ListingModel;
-
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['ListingModel']))
 		{
 			$model->attributes=$_POST['ListingModel'];
+			$model->listing_owner_user_id=$_SESSION['userid'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->listing_id));
 		}
