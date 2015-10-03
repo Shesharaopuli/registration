@@ -32,11 +32,11 @@ class ListingController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','view','update'),
+				'actions'=>array('create','view','update','ViewAllListing'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete','view','update'),
+				'actions'=>array('admin','delete','view','update','ViewAllListing'),
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
@@ -127,6 +127,18 @@ class ListingController extends Controller
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
+	}
+	
+	/**
+	 * View All listing that are registered by all users
+	 */
+	public function actionViewAllListing()
+	{
+		$dataProvider=ListingModel::model()->findAll();
+		$this->render('listings',array(
+				'dataProvider'=>$dataProvider,
+		));
+		
 	}
 
 	/**
