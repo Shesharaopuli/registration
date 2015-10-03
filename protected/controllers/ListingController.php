@@ -122,7 +122,8 @@ class ListingController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('ListingModel');
+		$userid=$_SESSION['userid'];
+		$dataProvider=ListingModel::model()->findAllByAttributes(array('listing_owner_user_id'=> $userid)) ;
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));

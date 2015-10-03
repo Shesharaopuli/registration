@@ -14,7 +14,9 @@ $this->menu=array(
 
 <h1>Listing Models</h1>
 
-<?php $this->widget('zii.widgets.CListView', array(
-	'dataProvider'=>$dataProvider,
-	'itemView'=>'_view',
-)); ?>
+<?php 
+foreach ($dataProvider as $data){
+	$this->renderPartial('_view', array('data'=>$data));
+}
+
+?>
