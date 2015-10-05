@@ -146,9 +146,10 @@ class BookingController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('BookingModel');
+		$userid=$_SESSION['userid'];
+		$dataProvider=BookingModel::model()->findAllByAttributes(array('booking_user_id'=> $userid)) ;
 		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
+				'dataProvider'=>$dataProvider,
 		));
 	}
 

@@ -11,10 +11,11 @@ $this->menu=array(
 	array('label'=>'Manage BookingModel', 'url'=>array('admin')),
 );
 ?>
+<h1>Listing Models</h1>
 
-<h1>Booking Models</h1>
+<?php 
+foreach ($dataProvider as $data){
+	$this->renderPartial('_view', array('data'=>$data));
+}
 
-<?php $this->widget('zii.widgets.CListView', array(
-	'dataProvider'=>$dataProvider,
-	'itemView'=>'_view',
-)); ?>
+?>
