@@ -69,7 +69,7 @@ class ListingController extends Controller
 		if(isset($_POST['ListingModel']))
 		{
 			$model->attributes=$_POST['ListingModel'];
-			$model->listing_owner_user_id=$_SESSION['userid'];
+			$model->listing_owner_user_id=Yii::app()->session['userid'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->listing_id));
 		}
@@ -122,7 +122,7 @@ class ListingController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$userid=$_SESSION['userid'];
+		$userid=Yii::app()->session['userid'];
 		$dataProvider=ListingModel::model()->findAllByAttributes(array('listing_owner_user_id'=> $userid)) ;
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,

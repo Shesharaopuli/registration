@@ -25,14 +25,14 @@
 	<div id="header">
 		<div id="logo"><?php echo CHtml::encode(Yii::app()->name); ?></div>
 	</div><!-- header -->
-
 	<div id="mainmenu">
 		<?php $this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
 					
 				array('label'=>'Home', 'url'=>array('/site/index')),
-				array('label'=>'User', 'url'=>array('/user/admin')),
-				array('label'=>'Listing', 'url'=>array('/listing/admin')),
+				array('label'=>'User', 'url'=>array('/user/admin'),'visible'=>Utility::isAdmin()),
+				array('label'=>'Listing', 'url'=>array('/listing/admin'),'visible'=>Utility::isAdmin()),
+				array('label'=>'Booking', 'url'=>array('/booking/admin'),'visible'=>Utility::isAdmin()),
 				array('label'=>'Add Listing', 'url'=>array('/listing/create'), 'visible'=>!Yii::app()->user->isGuest),
 				array('label'=>'All Listing', 'url'=>array('/listing/ViewAllListing')),
 				array('label'=>'View My Listing', 'url'=>array('/listing/index'), 'visible'=>!Yii::app()->user->isGuest),

@@ -59,7 +59,7 @@ class BookingController extends Controller
 		{
 			//$model->attributes=$_POST['BookingModel'];
 			$model->booking_listing_id=$_POST['listing_id'];
-			$model->booking_user_id=$_SESSION['userid'];
+			$model->booking_user_id=Yii::app()->session['userid'];
 			$model->booking_amount=$_POST['listing_price'];
 			if($model->save()){
 				$this->redirect(array('view','id'=>$model->booking_id));
@@ -146,7 +146,7 @@ class BookingController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$userid=$_SESSION['userid'];
+		$userid=Yii::app()->session['userid'];
 		$dataProvider=BookingModel::model()->findAllByAttributes(array('booking_user_id'=> $userid)) ;
 		$this->render('index',array(
 				'dataProvider'=>$dataProvider,
