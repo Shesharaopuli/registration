@@ -60,7 +60,9 @@ class BookingController extends Controller
 			//$model->attributes=$_POST['BookingModel'];
 			$model->booking_listing_id=$_POST['listing_id'];
 			$model->booking_user_id=Yii::app()->session['userid'];
-			$model->booking_amount=$_POST['listing_price'];
+			$bookingamount=Yii::app()->params['tax']*$_POST['listing_price']/100 + $_POST['listing_price'];
+			$model->booking_amount=$bookingamount;
+			
 			if($model->save()){
 				$this->redirect(array('view','id'=>$model->booking_id));
 			}

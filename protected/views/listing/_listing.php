@@ -22,6 +22,7 @@
 	<input type='hidden' name='listing_id' value="<?php echo $data->listing_id ?>">
 	<input type='hidden' name='listing_price' value=<?php echo $data->listing_price ;?>>
 	<input type='submit' value='Book it'>
+	<p style="color:red;opacity:0.7;">Note:<?php echo Yii::app()->params['tax']; ?>% Additional Tax on price</p>
 	</form>
 	
 	
